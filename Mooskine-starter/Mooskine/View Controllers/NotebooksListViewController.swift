@@ -20,6 +20,8 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
         navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "toolbar-cow"))
         navigationItem.rightBarButtonItem = editButtonItem
         updateEditButtonState()
+        let notebook : Notebook
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -28,6 +30,7 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
         if let indexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: indexPath, animated: false)
             tableView.reloadRows(at: [indexPath], with: .fade)
+            
         }
     }
 
