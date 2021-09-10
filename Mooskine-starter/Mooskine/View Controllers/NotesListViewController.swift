@@ -8,12 +8,16 @@
 
 import UIKit
 
+import CoreData
+
 class NotesListViewController: UIViewController, UITableViewDataSource {
     /// A table view that displays a list of notes for a notebook
     @IBOutlet weak var tableView: UITableView!
 
     /// The notebook whose notes are being displayed
     var notebook: Notebook!
+    
+    var dataController : Datacontroller!
     
     var notes : [Note] = []
 
