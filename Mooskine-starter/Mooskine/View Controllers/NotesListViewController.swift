@@ -33,6 +33,17 @@ class NotesListViewController: UIViewController, UITableViewDataSource {
 
         navigationItem.title = notebook.name
         navigationItem.rightBarButtonItem = editButtonItem
+        
+        let fetchRequest : NSFetchRequest<Note> = Note.fetchRequest()
+        let predicate = NSPredicate(format: "notebook == %@", notebook)
+        fetchRequest.predicate = predicate
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        if let result = try? dataController.viewContext.fetch(fetchRequest){
+            notes = result
+        }
+        
         updateEditButtonState()
     }
 
